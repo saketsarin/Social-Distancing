@@ -3,7 +3,7 @@ from People_Detection import Detect
 
 vid = cv2.VideoCapture('./testing/t2.mp4')
 vid.set(cv2.CAP_PROP_BUFFERSIZE, 2)
-fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # 'x264' doesn't work
+fourcc = cv2.VideoWriter_fourcc(*'mp4v') 
 out = cv2.VideoWriter('./testing/video_path_1.mp4',fourcc, 60.0,(980,498))
 
 while True:
