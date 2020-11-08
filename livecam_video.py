@@ -3,8 +3,8 @@ from People_Detection import Detect
 
 vid = cv2.VideoCapture(0)
 vid.set(cv2.CAP_PROP_BUFFERSIZE, 2)
-fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # 'x264' doesn't work
-out = cv2.VideoWriter('./testing/live_video_1.mp4',fourcc, 60.0,(980,498))  # 'False' for 1-ch instead of 3-ch for color
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+out = cv2.VideoWriter('./testing/live_video_1.mp4',fourcc, 60.0,(980,498))
 
 while True:
     ret, frame = vid.read()

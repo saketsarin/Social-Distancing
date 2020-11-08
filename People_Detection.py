@@ -4,12 +4,12 @@ from imutils.object_detection import non_max_suppression
 from ibm_watson import TextToSpeechV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 
-authenticator = IAMAuthenticator('xwGBfPRu52MpdN9hmHzQcazpW-zm5CbxI2LwAVWc5uxS')
+authenticator = IAMAuthenticator('d9fpXidhL13xntB5LpDAwD-s9gQfLvwcwlW0ZE9OiH1j')
 text_to_speech = TextToSpeechV1(
     authenticator=authenticator
 )
 
-text_to_speech.set_service_url('https://api.us-east.text-to-speech.watson.cloud.ibm.com')
+text_to_speech.set_service_url('https://api.eu-gb.text-to-speech.watson.cloud.ibm.com/instances/19cb390e-a419-4153-b846-acba65e3871d')
 
 #histogram of oriented gradients detector
 hog = cv2.HOGDescriptor()
