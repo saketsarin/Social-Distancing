@@ -3,6 +3,7 @@ import numpy as np
 from imutils.object_detection import non_max_suppression
 from ibm_watson import TextToSpeechV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+from playsound inport playsound
 
 authenticator = IAMAuthenticator('d9fpXidhL13xntB5LpDAwD-s9gQfLvwcwlW0ZE9OiH1j')
 text_to_speech = TextToSpeechV1(
@@ -40,5 +41,6 @@ def Detect(frame):
                     accept='audio/wav'
                 ).get_result().content)
             )
+            playsound('alert.wav')
     cv2.imshow('output', frame)
     return frame
