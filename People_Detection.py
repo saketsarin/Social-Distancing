@@ -38,7 +38,7 @@ def Detect(frame):
                     'Alert, too many people!' ,
                     voice='en-US_AllisonV3Voice' ,
                     accept='audio/wav'
-                ).get_result().content()
+                ).get_result().content)
             )
     cv2.imshow('output', frame)
     return frame
