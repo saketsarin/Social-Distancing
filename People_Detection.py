@@ -1,6 +1,15 @@
 import cv2
 import numpy as np
 from imutils.object_detection import non_max_suppression
+from ibm_watson import TextToSpeechV1
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+
+authenticator = IAMAuthenticator('xwGBfPRu52MpdN9hmHzQcazpW-zm5CbxI2LwAVWc5uxS')
+text_to_speech = TextToSpeechV1(
+    authenticator=authenticator
+)
+
+text_to_speech.set_service_url('https://api.us-east.text-to-speech.watson.cloud.ibm.com')
 
 #histogram of oriented gradients detector
 hog = cv2.HOGDescriptor()
@@ -23,5 +32,13 @@ def Detect(frame):
     cv2.putText(frame, f'Total People : {x - 1}', (20, 450), cv2.FONT_HERSHEY_DUPLEX, 0.8, (0, 0, 250), 2)
     if x > 10:
         cv2.putText(frame, f'Alert! Too Many People...', (250, 250), cv2.FONT_HERSHEY_DUPLEX, 1.5, (255, 0, 0), 2)
+        with open('alert.wav', 'wb') as audio_file:
+            audio_file.write(
+                text_to_speech.synthesize(
+                    'Alert, too many people!' ,
+                    voice='en-US_AllisonV3Voice' ,
+                    accept='audio/wav'
+                ).get_result().content()
+            )
     cv2.imshow('output', frame)
     return frame
